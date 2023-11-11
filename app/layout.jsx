@@ -15,3 +15,5 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+
+//* this page contains all our pages
