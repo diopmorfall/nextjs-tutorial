@@ -1,7 +1,28 @@
+import { notFound } from "next/navigation";
+
+export const dynamicParams = false;
+//* we can use it when we request an id for a page that wasn't pre-rendered, maybe to lead to a 404 page
+//* but if it's true (default value), Next is gonna try to fetch that id and if exists, it'll create the static page
+
+export default async function generateStaticParams(){
+    const res = await fetch('localhost:4000/tickets')
+    const tickets = await res.json()
+    return tickets.tickets.map(ticket => ({
+        id: ticket.id
+    }))
+}
+//* this function will allow us to pre-render all the pages ahead of time, by defining the ids and all the routes
+//! it only can work if the revalidation is not 0, otherwise it doesn't make sense to pre-render pages that always change
+
+
 async function getTicket(id){
     /*const res = await fetch('localhost:4000/ticket/' + id, {
         next: {
             revalidate: 60 
+        }
+
+        if(!res.ok){ //* we have to check the response to serve the 404 page if needed
+            notFound()
         }
     })
     return res.json()*/

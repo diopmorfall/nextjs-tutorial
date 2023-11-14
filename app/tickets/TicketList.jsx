@@ -9,6 +9,8 @@ async function getTickets(){
             //* even if we attempt a second one, we'll get the cached version because it's available; but it'll be revalidated
             //* the third request instead will be updated, if the response changed in any way
             //* if it's 0, data won't be cached and every time we're performing a new request
+            //* this makes it a case of dynamic rendering, because it's not predictably going to render the page because its content may change often
+            //* otherwise, if we set the revalidation Next is going to use the static rendering, using the cached version of the page
         }
     })*/
     //return res.json()
