@@ -1,14 +1,12 @@
 import Link from "next/link";
-import { resolve } from "styled-jsx/css";
 
 async function getTickets(){
-    //todo: the json server only works locally I guess, check it
-    //todo: npm install json-server -g, json-server --watch --port 4000 ./_data/db.json
     await new Promise(resolve => setTimeout(resolve, 3000))
 
     const res = await fetch('http://localhost:4000/tickets', {
         next: {
-            revalidate: 30 //* this allows us to attempt a new request only after 30 seconds from the previous one
+            revalidate: 30
+            //* this allows us to attempt a new request only after 30 seconds from the previous one
             //* even if we attempt a second one, we'll get the cached version because it's available; but it'll be revalidated
             //* the third request instead will be updated, if the response changed in any way
             //* if it's 0, data won't be cached and every time we're performing a new request
@@ -25,7 +23,7 @@ export default async function TicketList(){ //? an asynchronous component
         <>
             {tickets.map(ticket => (
                 <div key={ticket.id} className="card my-5">
-                    <Link href={`/ticket/${ticket.id}`}>
+                    <Link href={`/tickets/${ticket.id}`}>
                         <h3>{ticket.title}</h3>
                         <p>{ticket.body.slice(0, 200)}...</p>
                         <div className={`pill ${ticket.priority}`}>
