@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 async function getTickets(){
     //todo: the json server only works locally I guess, check it
     //todo: npm install json-server -g, json-server --watch --port 4000 ./_data/db.json
@@ -40,10 +42,9 @@ async function getTickets(){
 
 export default async function TicketList(){ //? an asynchronous component
     const tickets = await getTickets();
-    console.log(tickets);
     return(
         <>
-            {tickets.map(ticket => (
+            {tickets.tickets.map(ticket => (
                 <div key={ticket.id} className="card my-5">
                     <Link href={`/ticket/${ticket.id}`}>
                         <h3>{ticket.title}</h3>
@@ -54,7 +55,7 @@ export default async function TicketList(){ //? an asynchronous component
                     </Link>
                 </div>
             ))}
-            {tickets.length === 0 && (
+            {tickets.tickets.length === 0 && (
                 <p className="text-center">There are no open tickets!</p>
             )}
         </>
