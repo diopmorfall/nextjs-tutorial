@@ -35,6 +35,7 @@ export default function CreateForm(){
             router.refresh()
             //* this allows us to refresh the app, otherwise we still see the cached version of the tickets
             router.push('/tickets')
+            //* this brings us to the page at the corresponding route
         }
     }
 
