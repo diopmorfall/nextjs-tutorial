@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 //* we can use it when we request an id for a page that wasn't pre-rendered, maybe to lead to a 404 page
 //* but if it's true (default value), Next is gonna try to fetch that id and if exists, it'll create the static page
 
