@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { resolve } from "styled-jsx/css";
 
 async function getTickets(){
     //todo: the json server only works locally I guess, check it
@@ -14,6 +15,7 @@ async function getTickets(){
         }
     })*/
     //return res.json()
+    await new Promise(resolve => setTimeout(resolve, 3000))
     const res = {
         "tickets": [
           {

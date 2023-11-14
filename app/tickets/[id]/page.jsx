@@ -26,6 +26,8 @@ async function getTicket(id){
         }
     })
     return res.json()*/
+    await new Promise(resolve => setTimeout(resolve, 3000))
+
     const tickets = {
         "tickets": [
           {
